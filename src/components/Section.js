@@ -1,21 +1,35 @@
 import React from 'react'
 import styled from 'styled-components'
+import Fade from 'react-reveal/Fade'
 
 function Section(props) {
   return (
     <Wrap bgImage={props.backgroundImg}>
-        <ItemText>
+      <Fade bottom>
+      <ItemText>
             <h1>{props.title}</h1>
+            <p></p>
             <p>{props.description}</p>
         </ItemText>
+      </Fade>
+       
         <Buttons>
         <ButtonGroup>
-            <LeftButton>
+          <Fade left>
+          <LeftButton>
                {props.leftBtnText}
             </LeftButton>
-            <RightButton>
-               {props.rightBtnText}
-            </RightButton>
+          </Fade>
+           
+            {props.rightBtnText &&
+            <Fade right>
+                  <RightButton>
+             {props.rightBtnText}
+          </RightButton>
+            </Fade>
+           
+            }
+           
         </ButtonGroup>
         <DownArrow src="/images/down-arrow.svg"/>
         </Buttons>
@@ -27,6 +41,7 @@ function Section(props) {
 export default Section
 
 const Wrap = styled.div`
+
 width: 100vx;
 height: 100vh;
 background-size: cover;
@@ -42,7 +57,9 @@ background-image: ${props => `url("/images/${props.bgImage}")`};
 
 const ItemText = styled.div`
     padding-top: 15vh;
+    padding-bottom: 10px;
     text-align: center;
+    z-index: -1;
 `
 
 const ButtonGroup = styled.div`
@@ -65,7 +82,6 @@ const LeftButton = styled.div`
     opacity: 0.85;
     text-transform: uppercase;
     font-size: 12px;
-    font-weight: bolder;
     cursor: pointer;
     margin: 8px;
 `
@@ -82,7 +98,7 @@ border-radius: 100px;
 opacity: 0.85;
 text-transform: uppercase;
 font-size: 12px;
-font-weight: bolder;
+
 cursor: pointer;
 margin: 8px;
 background: white;
