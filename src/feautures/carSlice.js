@@ -7,7 +7,7 @@ const initialState = {
 const carSlice = createSlice({
     name: 'car',
     initialState,
-    reducers:{}
+    reducers: {}
 })
 
 export const selectCars = state => state.car.cars
